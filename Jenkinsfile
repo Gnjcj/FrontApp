@@ -1,7 +1,7 @@
 pipeline {
   agent {
     docker {
-      image 'guywou/angular'
+      image 'pivotalpa/angular-cli'
       args '-p 3000:3000'
     }
 
