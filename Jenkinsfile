@@ -1,27 +1,34 @@
 pipeline {
     agent any
+
+    stages {
+        stage("Quality Assurance") {
+            agent {
+                docker "weboaks/node-karma-protractor-chrome:headless"
+            }
+
             stages {
                 stage("Install dependencies") {
                     steps {
-                        sh "npm install"
-                    
-                
+                        sh "npm ci"
+                    }
+                }
 
                 stage("Build") {
                     steps {
-                        sh "ng run build"
+                        sh "npm run build"
                     }
                 }
 
                 stage("Lint") {
                     steps {
-                        sh "ng lint"
+                        sh "npm run lint"
                     }
                 }
 
                 stage("Unit tests") {
                     steps {
-                        sh "ng test"
+                        sh "npm run test:coverage"
                     }
                 }
 
@@ -30,10 +37,8 @@ pipeline {
                         sh "npm run e2e"
                     }
                 }
-                
             }
         }
 
-       
+      
     }
-}
