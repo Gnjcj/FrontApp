@@ -5,7 +5,7 @@ echo 'production in the local "build" directory (i.e. within the appropriate'
 echo 'subdirectory of "/var/jenkins_home/workspace/"), correctly bundles React'
 echo 'in production mode and optimizes the build for the best performance.'
 set -x
-npm run ng build 
+ng build 
 set +x
 
 echo 'The following "npm" command runs your Node.js/React application in'
@@ -17,7 +17,7 @@ echo 'is followed by another command that retrieves the process ID (PID) value'
 echo 'of the previously run process (i.e. "npm start") and writes this value to'
 echo 'the file ".pidfile".'
 set -x
-npm run ng serve &
+ng serve &
 sleep 1
 echo $! > .pidfile
 set +x
