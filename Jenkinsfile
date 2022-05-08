@@ -1,6 +1,6 @@
 pipeline {
-  
-  stages {
+  agent none {
+      stages {
     stage('install') {
       steps {
       nodejs(nodeJSInstallationName: 'NodeJS')
@@ -26,4 +26,6 @@ pipeline {
       }
     }
     }
+  }
+
   }
