@@ -1,7 +1,7 @@
 pipeline {
   agent {
     docker {
-      image 'angular/ngcontainer'
+      image 'houssemdocker/angular-app'
       args '-p 3000:3000'
     }
 
