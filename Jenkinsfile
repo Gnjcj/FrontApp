@@ -1,32 +1,27 @@
 pipeline {
     agent any
-
-   
-      
-       
-
             stages {
                 stage("Install dependencies") {
                     steps {
-                        sh "npm ci"
+                        sh "npm install"
                     
                 
 
                 stage("Build") {
                     steps {
-                        sh "npm run build"
+                        sh "ng run build"
                     }
                 }
 
                 stage("Lint") {
                     steps {
-                        sh "npm run lint"
+                        sh "ng lint"
                     }
                 }
 
                 stage("Unit tests") {
                     steps {
-                        sh "npm run test:coverage"
+                        sh "ng test"
                     }
                 }
 
@@ -35,26 +30,10 @@ pipeline {
                         sh "npm run e2e"
                     }
                 }
+                
             }
         }
 
-        stage("Analysis") {
-            agent {
-                docker {
-                    image "noenv/node-sonar-scanner"
-                    args "--network web"
-                }
-            }
-
-            when {
-                branch "master"
-            }
-
-            steps {
-                withSonarQubeEnv("sonar.jmerle.dev") {
-                    sh "sonar-scanner -Dsonar.projectVersion=${BUILD_NUMBER}"
-                }
-            }
-        }
+       
     }
 }
