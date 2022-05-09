@@ -2,12 +2,12 @@
   "name": "front-app",
   "version": "0.0.0",
   "scripts": {
-    "ng": "./node_modules/.bin/ng",
-    "start": "./node_modules/.bin/ng serve",
-    "build": "./node_modules/.bin/ng build",
-    "watch": "./node_modules/.bin/ng build --watch --configuration development",
-    "test": "./node_modules/.bin/ng test",
-    "test:ci": "./node_modules/.bin/ng test --browsers=ChromeHeadless --watch=false"
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test",
+    "test:ci": "ng test --browsers=ChromeHeadless --watch=false"
   },
   "private": true,
   "dependencies": {
